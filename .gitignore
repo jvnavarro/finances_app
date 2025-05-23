@@ -1,0 +1,76 @@
+# Compiled Object files
+*.o
+*.obj
+*.lo
+*.la
+*.slo
+*.so
+*.dylib
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Executables
+*.exe
+*.o
+*.app
+*.dll
+
+# Build directories (common names)
+build/
+bin/
+Release/
+Debug/
+x64/
+x86/
+**/Release/
+**/Debug/
+
+# CMake files (if you use CMake)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cbp # Code::Blocks project file (can be versioned, but often generated)
+*.depend # Code::Blocks dependency file
+*.layout # Code::Blocks layout file
+
+# Visual Studio files (if you use Visual Studio)
+*.suo
+*.user
+*.vcxproj.filters
+*.vcxproj.user
+*.sln.docstates
+.vs/
+
+# Other common generated files
+*.stackdump
+*.log
+*.tmp
+*.swp # Swap files (e.g., Vim)
+*~ # Backup files
+
+# macOS specific
+.DS_Store
+._*
+
+# Your specific data file (if you don't want to version it)
+# dados.txt
+# If you DO want to version 'dados.txt' from the 'bin/' directory,
+# but ignore other executables in 'bin/', you can do this:
+# bin/*
+# !bin/dados.txt
+# However, if 'dados.txt' is user-generated and changes often,
+# you might prefer not to commit it. You have 'bin/dados.txt' in your main.cpp.
+# For now, I'll assume you want to ignore the 'bin' directory which typically holds executables.
+# If 'dados.txt' is meant to be a default/sample, keep it and adjust.
+# If 'dados.txt' is truly user data, it's good to ignore it or have a strategy for it.
+
+# If your dados.txt is specifically in a directory you want to otherwise ignore (like bin/)
+# but you want to keep dados.txt, you can do this:
+# bin/*
+# !bin/dados.txt
+
+# If your dados.txt is at the root, and you don't want to commit it:
+# dados.txt
