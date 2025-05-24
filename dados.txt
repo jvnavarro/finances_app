@@ -1,0 +1,6 @@
+CONTA "banrisul" 90
+  DESPESA_DEBITO "feijao" 10 05/05/2025
+CONTA "nubank" 0
+  CARTAO "CC" 1500
+    DESPESA_CARTAO "" 50 25/05/2025
+  POUPANCA "caixinha" 100

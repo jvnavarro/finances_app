@@ -4,32 +4,43 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Despesa.h"
+#include "Despesa.h" // Contém DespesaCartao que usa Date
+#include "date.h"    // Para o parâmetro Date em adicionarDespesa
 
-using namespace std;
-class Conta;  // declaração antecipada
+class Conta;  // Declaração antecipada
 
 class CartaoCredito {
 private:
-    string nome;
+    std::string nome;
     double limite;
-    double saldo;
-    double fatura;
-    
+    // double saldo; // Removido, usaremos saldo_disponivel calculado
+    // double fatura; // Removido, usaremos fatura_atual
+    double fatura_atual; // Saldo da fatura atual do cartão
+
     Conta* contaAssociada;
-    vector<unique_ptr<DespesaCartao>> despesas;
+    std::vector<std::unique_ptr<DespesaCartao>> despesas;
+
+    void recalcularFatura(); // Método privado para atualizar fatura_atual
 
 public:
-    CartaoCredito(string nome, Conta* conta);
-    void adicionarDespesa(const string& descricao, double valor);
-    double totalFatura() const;
-    void calcularFatura();
+    // Construtor atualizado para incluir o limite
+    CartaoCredito(std::string nome, Conta* conta, double limiteCartao);
+
+    // Método atualizado para incluir a data da despesa
+    void adicionarDespesa(const std::string& descricao, double valor, const Date& data);
+
     void setLimite(double novoLimite);
     double getLimite() const;
-    double getSaldo() const;
-    double getFatura() const;
-    string getNome() const;
-    const vector<unique_ptr<DespesaCartao>>& getDespesas() const;
+    double getSaldoDisponivel() const; // Saldo = limite - fatura_atual
+    double getFaturaAtual() const;     // Retorna a fatura_atual calculada
+    std::string getNome() const;
+    const std::vector<std::unique_ptr<DespesaCartao>>& getDespesas() const;
+
+    // Métodos que foram removidos ou substituídos:
+    // double totalFatura() const; // Substituído por getFaturaAtual()
+    // void calcularFatura();    // Lógica agora em recalcularFatura() e chamada internamente
+    // double getSaldo() const;    // Substituído por getSaldoDisponivel()
+    // double getFatura() const;   // Renomeado para getFaturaAtual()
 };
 
 #endif

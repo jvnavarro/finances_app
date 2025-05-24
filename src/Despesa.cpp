@@ -1,9 +1,10 @@
-#include "../Despesa.h"
+#include "../Despesa.h" // Assuming Despesa.h is in the parent directory
+#include "../date.h"   // Assuming date.h is in the parent directory
 using namespace std;
-Despesa::Despesa(string descricao, double valor)
-    : descricao(descricao), valor(valor) {}
+Despesa::Despesa(std::string descricao, double valor, const Date& data)
+    : descricao(descricao), valor(valor), data(data) {}
 
-string Despesa::getDescricao() const {
+std::string Despesa::getDescricao() const {
     return descricao;
 }
 
@@ -11,19 +12,22 @@ double Despesa::getValor() const {
     return valor;
 }
 
-// DespesaDebito
-DespesaDebito::DespesaDebito(string descricao, double valor)
-    : Despesa(descricao, valor) {}
-
-string DespesaDebito::getTipo() const {
-    return "DEBITO";
+Date Despesa::getDate() const {
+    return data;
 }
 
-// DespesaCartao
+// --- DespesaDebito ---
+DespesaDebito::DespesaDebito(std::string descricao, double valor, const Date& data)
+    : Despesa(descricao, valor, data) {}
 
-DespesaCartao::DespesaCartao(string descricao, double valor)
-    : Despesa(descricao, valor) {}
+std::string DespesaDebito::getTipo() const {
+    return "Débito";
+}
 
-string DespesaCartao::getTipo() const {
-    return "CARTAO";
+// --- DespesaCartao ---
+DespesaCartao::DespesaCartao(std::string descricao, double valor, const Date& data)
+    : Despesa(descricao, valor, data) {}
+
+std::string DespesaCartao::getTipo() const {
+    return "Cartão";
 }
